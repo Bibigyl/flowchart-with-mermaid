@@ -1,0 +1,62 @@
+.nodes rect {
+  stroke: darkgray!important;
+}
+
+.nodes .node:hover rect,
+.nodes .node:focus rect {
+  stroke: rgb(118, 179, 118)!important;
+  stroke-width: 3px!important;
+  cursor: pointer;
+  transform: scale(1.1, 1.25);
+  transition: all 0.05s;
+}
+
+.nodes .node:hover .nodeLabel,
+.nodes .node:focus .nodeLabel {
+  color: black!important;
+  /* transform: scaleY(1.1);
+  transition: all 0.05s; */
+}
+
+.nodes .node:focus {
+  outline: none;
+}
+
+.nodes .nodeLabel {
+  display: block;
+  cursor: pointer;
+}
+
+.edgePaths path {
+  stroke: darkgray!important;
+}
+
+.edgePaths path.active-arrow {
+  stroke: rgb(118, 179, 118)!important;
+  stroke-width: 4px!important;
+}
+
+.marker {
+  fill: darkgray!important;
+}
+
+.marker#flowchart-pointEnd-active {
+  fill: rgb(118, 179, 118)!important;
+}
+
+.cluster-label .nodeLabel {
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cluster {
+  display: inline-block!important;
+}
+
+
+.wrap {
+  margin: 50px;
+  height: calc(100vh - 100px);
+  width: calc(100vw - 100px);
+}
