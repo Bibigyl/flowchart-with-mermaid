@@ -1,3 +1,4 @@
+
 const stagesData = stages.data;
 const substagesData = substages.data;
 const PAGE_SCALE = {
@@ -158,25 +159,30 @@ const scrollToEl = el => {
 const renderFlowchart = (substagesData, stagesData) => {
   generateStyles(substagesData);
   document.getElementById("mermaid").textContent = buildDiagramText(substagesData, stagesData);
+  // to rebuild:
+  // document.getElementById("mermaid").removeAttribute("data-processed")
 
   const config = {
-    startOnLoad: true,
+    startOnLoad: false,
     flowchart: {
       useMaxWidth: false,
     },
     securityLevel: "loose",
   };
+
   mermaid.initialize(config);
+  mermaid.init(undefined, document.getElementById("mermaid"));   
 };
 
 const handleFlowchartRendered = () => {
   const nodes = document.querySelectorAll(".node");
-  if (nodes.length === 0) return;
+  const arrowForwardMarker = document.getElementById("flowchart-pointEnd");
+
+  if (nodes.length === 0 || arrowForwardMarker === null) return;
   for (let el of nodes) {
     el.setAttribute("tabindex", "0");
   }
 
-  const arrowForwardMarker = document.getElementById("flowchart-pointEnd");
   const cloneMarker = arrowForwardMarker.cloneNode(true);
   cloneMarker.setAttribute("id", "flowchart-pointEnd-active");
   arrowForwardMarker.after(cloneMarker);
@@ -198,18 +204,3 @@ flowchartRenderedObserver.observe(document.getElementById("mermaid"), {
   childList: true
 });
 renderFlowchart(substagesData, stagesData);
-
-
-
-// window.addEventListener("message", event => {
-//   // TODO дописать проверку
-//   // if (event.origin != 'http://javascript.info') {
-//   //   return;
-//   // }
-
-//   flowchartRenderedObserver.observe(document.getElementById("mermaid"), {
-//     childList: true
-//   });
-//   const { substages, stages } = event.data
-//   renderFlowchart(substages, stages);
-// });
