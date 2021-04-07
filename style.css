@@ -7,15 +7,14 @@
   stroke: rgb(118, 179, 118)!important;
   stroke-width: 3px!important;
   cursor: pointer;
-  transform: scale(1.1, 1.25);
+  /* to fix */
+  /* transform: scale(1.1, 1.25); */
   transition: all 0.05s;
 }
 
 .nodes .node:hover .nodeLabel,
 .nodes .node:focus .nodeLabel {
   color: black!important;
-  /* transform: scaleY(1.1);
-  transition: all 0.05s; */
 }
 
 .nodes .node:focus {
@@ -52,11 +51,4 @@
 
 .cluster {
   display: inline-block!important;
-}
-
-
-.wrap {
-  margin: 50px;
-  height: calc(100vh - 100px);
-  width: calc(100vw - 100px);
 }
